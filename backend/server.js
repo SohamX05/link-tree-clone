@@ -1,6 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
+require('dotenv').config();
+
 const app = express();
-const port = 5000;
+const port = process.env.port || 5000;
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB is successfully connected"))
+    .catch(() => console.log("Database connection failed: ", err));
 
 app.get('/', (req, res) => {
     res.json({

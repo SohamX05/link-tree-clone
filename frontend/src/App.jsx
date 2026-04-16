@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+//import './App.css'
 
 function App(){
   const [projects, setProjects] = useState([]);
@@ -50,7 +50,7 @@ function App(){
 
   return (
     <div className='app-container'>
-      <h1>My LinkTree</h1>
+      <h1 className="text-4xl font-extrabold text-blue-600 mb-8">My LinkTree</h1>
 
       <form className="add-link-form" onSubmit={handleAddLink}>
         <input

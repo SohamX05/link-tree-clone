@@ -47,6 +47,18 @@ function App(){
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`https://expert-space-barnacle-xjjp554wv4xh6xpg-5000.app.github.dev/api/projects/${id}`, {
+        method: 'DELETE',
+      });
+      if(Response.ok){
+        setProjects(projects.filter((project) => project._id !== id));
+      }
+    } catch (error) {
+      console.error("Failed to delete project: ", error);
+    }
+  };
 
   return (
     <div className='min-h-screen bg-gray-50 flex flex-col items-center p-6 font-sans'>
@@ -91,15 +103,23 @@ function App(){
 
       <div className='w-full max-w-md flex flex-col gap-4 mb-12'>
         {projects.map((project) => (
-        <a
-          key={project._id}
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full py-4 px-6 bg-emerald-500 text-black font-bold text-center text-lg rounded-xl shadow-md transition-all hover:scale-105 active:scale-95"
-        >
-          {project.title}
-        </a>
+          <div>
+            <a
+            key={project._id}
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full py-4 px-6 bg-emerald-500 text-black font-bold text-center text-lg rounded-xl shadow-md transition-all hover:scale-105 active:scale-95"
+            >
+              {project.title}
+            </a>
+            <button
+              onClick={() => handleDelete(project._id)}
+              className="p-4 bg-red-100 text-black-600 hover:bg-red-500 hover:text-black rounded-xl shadow-md transition-all active:scale-95 text-xl"
+            >
+              Delete
+            </button>
+          </div>
         ))}
       </div>
     </div>

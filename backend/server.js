@@ -43,6 +43,17 @@ app.get('/api/projects', async (req, res) => {
     }
 });
 
+app.delete('api/projetcs/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Project.findByIdAndDelete(id);
+        res.status(200).json({ success: true, message: "Link deleted successfully!"});
+    } catch (error) {
+        console.error("Error deleting link: ", error);
+        res.status(500).json({ success: false, message: "Failed to delete link!"});
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 });

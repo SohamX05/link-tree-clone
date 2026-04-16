@@ -49,16 +49,30 @@ function App(){
 
 
   return (
-    <div className='app-container'>
-      <h1 className="text-4xl font-extrabold text-blue-600 mb-8">My LinkTree</h1>
-
-      <form className="add-link-form" onSubmit={handleAddLink}>
+    <div className='min-h-screen bg-gray-50 flex flex-col items-center p-6 font-sans'>
+      <div className="flex flex-col items-center mt-12 mb-8">
+        <img 
+          src="https://github.com/SohamX05.png"
+          alt="Profile"
+          className="w-28 h-28 rounded-full shadow-xl border-4 border-white object-cover"
+        />
+        <h1 className="mt-4 text-3xl font-extrabold text-gray-900 tracking-tight">Soham</h1>
+        <p className="text-blue-600 font-semibold tracking-wide">@SohamX05</p>
+        <p className="mt-3 text-center text-gray-600 max-w-sm leading-relaxed">
+        Full Stack Developer || CSE || AI Developer, Java & MERN Stack. Welcome to My Portfolio
+        </p>
+      </div>
+      <form 
+        onSubmit={handleAddLink}
+        className="flex flex-col gap-4 w-full max-w-md bg-white p-6 rounded-2xl shadow-sm border border-gray-200 mb-8"  
+      >
         <input
           type="text"
           placeholder="Link Title (e.g. My Portfolio)"
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
           required
+          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
         />
         <input
           type="url"
@@ -66,18 +80,23 @@ function App(){
           value={newUrl}
           onChange={(e) => setNewUrl(e.target.value)}
           required
+          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
         />
-        <button type="submit">Add New Link</button>
+        <button 
+          type="submit"
+          className="w-full py-3 mt-2 bg-black text-white font-bold rounded-xl hover:bg-gray-800 transition-all active:scale-95 shadow-md"  
+        >
+        Add New Link</button>
       </form>
 
-      <div className='links-list'>
+      <div className='w-full max-w-md flex flex-col gap-4 mb-12'>
         {projects.map((project) => (
         <a
           key={project._id}
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="link-card"
+          className="block w-full py-4 px-6 bg-emerald-500 text-black font-bold text-center text-lg rounded-xl shadow-md transition-all hover:scale-105 active:scale-95"
         >
           {project.title}
         </a>

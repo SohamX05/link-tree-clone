@@ -43,7 +43,7 @@ app.get('/api/projects', async (req, res) => {
     }
 });
 
-app.delete('api/projetcs/:id', async (req, res) => {
+app.delete('/api/projects/:id', async (req, res) => {
     try {
         const { id } = req.params;
         await Project.findByIdAndDelete(id);

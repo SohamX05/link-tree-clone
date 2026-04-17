@@ -88,7 +88,7 @@ function App(){
         />
         <input
           type="url"
-          placeHolder="URL"
+          placeholder="URL"
           value={newUrl}
           onChange={(e) => setNewUrl(e.target.value)}
           required
@@ -103,21 +103,20 @@ function App(){
 
       <div className='w-full max-w-md flex flex-col gap-4 mb-12'>
         {projects.map((project) => (
-          <div>
+          <div key={project._id} className="flex items-center gap-3 w-full">
             <a
-            key={project._id}
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full py-4 px-6 bg-emerald-500 text-black font-bold text-center text-lg rounded-xl shadow-md transition-all hover:scale-105 active:scale-95"
-            >
+            className="flex-grow py-4 px-6 bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-center text-lg rounded-xl shadow-md transition-all hover:scale-105 active:scale-95"            >
               {project.title}
             </a>
             <button
               onClick={() => handleDelete(project._id)}
-              className="p-4 bg-red-100 text-black-600 hover:bg-red-500 hover:text-black rounded-xl shadow-md transition-all active:scale-95 text-xl"
+              className="flex-shrink-0 flex items-center justify-center w-[60px] h-[60px] bg-red-100 text-red-600 hover:bg-red-500 hover:text-white rounded-xl shadow-md transition-all active:scale-95 text-2xl"
+              title="Delete Link"
             >
-              Delete
+              🗑️
             </button>
           </div>
         ))}

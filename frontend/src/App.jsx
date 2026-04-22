@@ -52,7 +52,7 @@ function App(){
       const response = await fetch(`https://expert-space-barnacle-xjjp554wv4xh6xpg-5000.app.github.dev/api/projects/${id}`, {
         method: 'DELETE',
       });
-      if(Response.ok){
+      if(response.ok){
         setProjects(projects.filter((project) => project._id !== id));
       }
     } catch (error) {
@@ -61,7 +61,7 @@ function App(){
   };
 
   return (
-    <div className='min-h-screen bg-gray-50 flex flex-col items-center p-6 font-sans'>
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-100 flex flex-col items-center p-6 font-sans">
       <div className="flex flex-col items-center mt-12 mb-8">
         <img 
           src="https://github.com/SohamX05.png"
